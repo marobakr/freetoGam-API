@@ -37,6 +37,8 @@ a {
   background-size: cover;
   background-position: center;
   position: relative;
+  z-index: 9999999;
+
 }
 /* Start Games Sections */
 
