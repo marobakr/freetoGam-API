@@ -183,3 +183,5 @@ prev.addEventListener('click', function () {
   }
   getDetails(counterIndex);
 });
+
+window.onload = startLoading();
