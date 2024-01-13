@@ -27,10 +27,10 @@ The FreeToGame Website is a web application that provides a curated list of free
 
 ## License
 
-This project is licensed under the (rapidapi.com).
+This project is licensed under the [https://www.freetogame.com/].
 
 ## Acknowledgments
 
-- Thanks to FreeToGame for providing the API.
+- Thanks to  [https://www.freetogame.com/] for providing the API.
 
 Feel free to explore, contribute, and have fun gaming!
