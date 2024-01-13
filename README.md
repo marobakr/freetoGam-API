@@ -27,7 +27,7 @@ The FreeToGame Website is a web application that provides a curated list of free
 
 ## License
 
-This project is licensed under the [MIT License](rapidapi.com).
+This project is licensed under the (rapidapi.com).
 
 ## Acknowledgments
 
