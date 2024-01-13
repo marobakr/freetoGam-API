@@ -144,8 +144,8 @@ function ToggleAllData() {
   const allCard = document.querySelectorAll('.card');
   allCard.forEach((card) => {
     card.addEventListener('click', function () {
-      startLoading();
       games.classList.toggle('d-none');
+      startLoading();
       boxDetails.classList.toggle('d-none');
     });
   });
@@ -184,4 +184,4 @@ prev.addEventListener('click', function () {
   getDetails(counterIndex);
 });
 
-window.onload = startLoading();
+
