@@ -19,48 +19,40 @@ const options = {
 // Toggle Class Active
 (function () {
   // Add Class Active
-  allLinks[0].classList.add('active');
-
   allLinks.forEach((link) => {
     link.addEventListener('click', function (e) {
       let category = e.target.innerHTML;
       //  Send New Category
       getAll(category);
       // Remove Prev Active
-      RemoveClassActive(allLinks);
+      document.querySelector('.nav-link.active').classList.remove('active');
       // Add Class Active
       this.classList.add('active');
     });
   });
-  // Remove Class Active From Prev
-  function RemoveClassActive(Links) {
-    Links.forEach((link) => {
-      link.classList.remove('active');
-    });
-  }
 })();
 
 // Get All Data Api
 async function getAll(category = 'mmorpg') {
-  startLoading();
-
+  loding.classList.remove('d-none');
   const url = `https://free-to-play-games-database.p.rapidapi.com/api/games?category=${category}`;
   const respons = await (await fetch(url, options)).json();
   console.log(respons);
   fullData = respons;
   displayAll(fullData);
   ToggleAllData();
+  loding.classList.add('d-none');
 }
 getAll();
 
 // Get getDetails Data Api
 async function getDetails(index) {
-  startLoading();
-
+  loding.classList.remove('d-none');
   const url = `https://free-to-play-games-database.p.rapidapi.com/api/game?id=${fullData[index].id}`;
   const details = await fetch(url, options);
   const respons = await details.json();
   displayDetails(respons);
+  loding.classList.add('d-none');
 }
 
 // Display All Data
@@ -194,6 +186,7 @@ prev.addEventListener('click', function () {
   if (counterIndex < 0) {
     counterIndex = fullData.length - 1;
   }
+
   getDetails(counterIndex);
 });
 
@@ -203,7 +196,7 @@ function startVideo(event) {
     videoEl.classList.remove('d-none');
     videoEl.muted = true;
     videoEl.play();
-  } else console.log("not vedio to show")
+  } else console.log('not vedio to show');
 }
 
 function stopVideo(event) {
