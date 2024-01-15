@@ -125,12 +125,21 @@ a {
 /* Start Details */
 #layerContainer {
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 #layerContainer i:not(:first-child) {
   padding: 10px;
   background-color: #fff;
   border-radius: 50%;
+}
+#layerContainer::before {
+  content: "";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.9);
+  inset: 0;
+  z-index:  -1;;
 }
 #layerContainer i {
   padding: 10px;

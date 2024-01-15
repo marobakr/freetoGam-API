@@ -42,8 +42,11 @@ const options = {
 
 // Get All Data Api
 async function getAll(category = 'mmorpg') {
+  startLoading();
+
   const url = `https://free-to-play-games-database.p.rapidapi.com/api/games?category=${category}`;
   const respons = await (await fetch(url, options)).json();
+  console.log(respons);
   fullData = respons;
   displayAll(fullData);
   ToggleAllData();
@@ -52,6 +55,8 @@ getAll();
 
 // Get getDetails Data Api
 async function getDetails(index) {
+  startLoading();
+
   const url = `https://free-to-play-games-database.p.rapidapi.com/api/game?id=${fullData[index].id}`;
   const details = await fetch(url, options);
   const respons = await details.json();
@@ -60,11 +65,9 @@ async function getDetails(index) {
 
 // Display All Data
 function displayAll(Games) {
-  startLoading();
   let cartonaBox = ``;
   Games.forEach((game, index) => {
     // Distract
-
     let {
       genre: uname,
       short_description: desc,
@@ -74,7 +77,7 @@ function displayAll(Games) {
     } = game;
     console.log();
     cartonaBox += `
-     <div class="col-md-6 col-lg-3">
+     <div  onmouseenter="test(event)" class="col-md-6 col-lg-3">
               <div class="card h-100" role="button" onclick="getDetails(${index})">
                 <figure class="p-3 mb-0">
                   <img
@@ -139,6 +142,12 @@ function displayDetails(respons) {
         `;
 
   innerBox.innerHTML = ditalisGame;
+  let bgImage = img.replace('thumbnail', 'background');
+  boxDetails.style.cssText = `
+  background-image: url(${bgImage});
+  background-size:cover;
+  background-position:center
+  `;
 }
 function ToggleAllData() {
   const allCard = document.querySelectorAll('.card');
@@ -184,4 +193,6 @@ prev.addEventListener('click', function () {
   getDetails(counterIndex);
 });
 
-
+function test(e) {
+  console.log(e);
+}
