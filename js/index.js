@@ -75,16 +75,20 @@ function displayAll(Games) {
       title,
       platform,
     } = game;
-    console.log();
+    let videoPath = img.replace('thumbnail.jpg', 'videoplayback.webm');
     cartonaBox += `
-     <div  onmouseenter="test(event)" class="col-md-6 col-lg-3">
+     <div  onmouseenter="startVideo(event)"onmouseleave="stopVideo(event)"  class="col-md-6 col-lg-3">
               <div class="card h-100" role="button" onclick="getDetails(${index})">
-                <figure class="p-3 mb-0">
+                <figure class="p-3 mb-0 position-relative">
                   <img
                     src=${img}
                     class="card-img-top"
                     alt="${title}"
+                    
                   />
+                      <video muted="true"  preload="none" loop   class="w-100 d-none h-100 position-absolute top-0 start-0 z-3">
+              <source src="${videoPath}">
+              </video>
                 </figure>
                 <div class="card-body p-3 text-center">
                   <div
@@ -193,6 +197,20 @@ prev.addEventListener('click', function () {
   getDetails(counterIndex);
 });
 
-function test(e) {
-  console.log(e);
+function startVideo(event) {
+  const videoEl = event.target.querySelector('video');
+  if (videoEl) {
+    videoEl.classList.remove('d-none');
+    videoEl.muted = true;
+    videoEl.play();
+  } else console.log("not vedio to show")
+}
+
+function stopVideo(event) {
+  const videoEl = event.target.querySelector('video');
+  if (videoEl) {
+    videoEl.classList.add('d-none');
+    videoEl.muted = true;
+    videoEl.pause();
+  } else console.log('not vedio to show');
 }

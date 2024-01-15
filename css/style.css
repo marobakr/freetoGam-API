@@ -87,18 +87,10 @@ a {
   transition: var(--main-transition);
   filter: grayscale(0.7);
 }
-@keyframes filterAimation {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  100% {
-    filter: hue-rotate(360deg);
-  }
-}
+
 .card:hover {
   transform: scale(1.05);
   filter: grayscale(0);
-  animation: filterAimation 0.5s linear;
 }
 .card-title {
   font-size: 0.875em;
